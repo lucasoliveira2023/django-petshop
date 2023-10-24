@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path
 
 from base.views import inicio, contato
-
+from base import views
 
 urlpatterns = [
     path('', inicio),
     path('admin/', admin.site.urls),
     path('contato/', contato, name='contato'),
+    path('reserva_banho/', views.reserva_banho, name='reserva_banho'),##att m6s2 importando da views a função criada chamada reserva_banho
+   
 ]
+
