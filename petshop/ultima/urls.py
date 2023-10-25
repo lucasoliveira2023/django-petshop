@@ -25,6 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contato/', contato, name='contato'),
     path('reserva_banho/', views.reserva_banho, name='reserva_banho'),##att m6s2 importando da views a função criada chamada reserva_banho
-   
+    path('fazer_reserva/', views.fazer_reserva, name='fazer_reserva'),##att m6s3 importando da views a função criada chamada fazer_reserva
 ]
 
