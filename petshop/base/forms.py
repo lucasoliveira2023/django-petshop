@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Reserva_pet
+from .models import ReservaPet
 class ContatoForm(forms.Form):
     nome =forms.CharField()
     email = forms.EmailField()
@@ -13,7 +13,7 @@ class ReservaBanhoForm(forms.Form):
     observacoes =forms.CharField(widget=forms.Textarea)
     
 ##modulo 6 semana3 atividaade
-class Reserva_pet_form(forms.ModelForm):
+class ReservaPetForm(forms.ModelForm):
     class Meta:
-        model = Reserva_pet
+        model = ReservaPet
         fields = ['nome_pet', 'telefone', 'dia_reserva', 'observacoes']

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <title>Contato</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
 </head>
+{% comment %} separar as div todas , https://getbootstrap.com/docs/5.1/forms/overview/{% endcomment %}
 <body>
     <h1>Entre em Contato</h1>
     <form method="post">
         {% csrf_token %}
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome"><br><br>
+        <input type="text" id="nome" name="nome">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
-        <label for="mensagem">Mensagem:</label><br>
+        <input type="email" id="email" name="email">
+        <label for="mensagem">Mensagem:</label>
         <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea><br><br>
         <input type="submit" value="Enviar">
     </form>
