@@ -1,2 +1,2 @@
 # django-petshop
-#first project django 
+# First project django 
