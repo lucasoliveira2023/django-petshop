@@ -31,9 +31,10 @@
         </a>
     </header>
     <main>
+      {% block principal %}
         <h1>Faça sua reserva de banho para o seu Pet</h1>
-        <a class="btn btn-primary" href="{% url 'contato' %}">Entre em Contato</a>
-        
+        <a href="{% url 'reserva:criar_reserva' %}" class="btn btn-primary" > Fazer Reserva </a>
+      {% endblock %}
     </main>
     <footer class="pt-5 my-5 text-muted border-top">
         Pet Online - Banhos para seus Pets

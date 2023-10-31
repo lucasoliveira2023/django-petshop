@@ -15,16 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from base.views import inicio, contato
-from base import views
+from base.views import inicio, contato, reserva_banho
+from reserva.views import criar_reserva
 
 urlpatterns = [
     path('', inicio),
-    path('admin/', admin.site.urls),
     path('contato/', contato, name='contato'),
-    path('reserva_banho/', views.reserva_banho, name='reserva_banho'),##att m6s2 importando da views a função criada chamada reserva_banho
-    path('fazer_reserva/', views.fazer_reserva, name='fazer_reserva'),##att m6s3 importando da views a função criada chamada fazer_reserva
+    path('reserva/', include('reserva.urls'), name='reserva'),
+    path('reserva_banho/', reserva_banho, name='reserva_banho'),##att m6s2 importando da views a função criada chamada reserva_banho
+    path('criar_reserva/', criar_reserva, name='fazer_reserva'),##att m6s3 importando da views a função criada chamada fazer_reserva
+    path('admin/', admin.site.urls),
 ]
-
