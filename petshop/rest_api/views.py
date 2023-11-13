@@ -2,8 +2,23 @@ from django.shortcuts import render
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
+
+from reserva.models import Reserva
+from rest_api.serializers import AgendamentoModelSerializer
+
+##att modulo 7 semana2
+from .models import Pet 
+from .serializers import PetSerializer
 
 # Create your views here.
+
+
+class AgendamentoModelViewSet(ModelViewSet):
+    queryset = Reserva.objects.all()
+    serializer_class = AgendamentoModelSerializer
+
+
 
 @api_view(['GET', 'POST'])
 def hello_world(request):
@@ -21,3 +36,9 @@ def test_lucas(request):
     
     return Response({'ola':'world API'})
 
+
+##att modulo7 semaana 2
+
+class petsModelViewSet(ModelViewSet):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer

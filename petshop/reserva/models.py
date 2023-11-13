@@ -24,4 +24,4 @@ class Reserva(models.Model):
     
     class Meta:
         verbose_name ='Reserva de Banho'
-        verbose_name_plural = 'Reserva de Banhos'
+        verbose_name_plural = 'Reserva de Banho'
