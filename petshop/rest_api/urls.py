@@ -1,9 +1,10 @@
 from django.urls import path
 
 from rest_framework.routers import SimpleRouter
-
+#import rest_api.views
 from rest_api.views import AgendamentoModelViewSet, hello_world, test_lucas
-from rest_api.views import petsModelViewSet ##att m7 semana2(não precisa adicionar eu acho, depois checar a duvida da atividade da semana)
+
+from rest_api.views import PetsModelViewSet ##att m7 semana2(não precisa adicionar eu acho, depois checar a duvida da atividade da semana)
 app_name = 'rest_api'
 
 router = SimpleRouter()

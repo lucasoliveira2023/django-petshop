@@ -43,6 +43,6 @@ def test_lucas(request):
 
 ##att modulo7 semaana 2
 
-class petsModelViewSet(ModelViewSet):
+class PetsModelViewSet(ModelViewSet):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer

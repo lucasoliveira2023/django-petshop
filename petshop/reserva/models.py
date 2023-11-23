@@ -11,7 +11,7 @@ class Reserva(models.Model):
         ('manhã', 'Manhã'),
         ('tarde', 'Tarde'),
     )
-    nome = models.CharField(verbose_name='Nome', max_length=50)
+    nome:str = models.CharField(verbose_name='Nome', max_length=50)
     email = models.EmailField(verbose_name='Email')
     nome_pet = models.CharField(verbose_name='Nome do Pet', max_length=50)
     data = models.DateField(verbose_name='Data', help_text='dd/mm/yyyy')
