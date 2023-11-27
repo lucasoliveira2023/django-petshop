@@ -10,11 +10,13 @@ from reserva.models import Reserva
 from rest_api.serializers import AgendamentoModelSerializer
 
 ##att modulo 7 semana2
-from .models import Pet 
-from .serializers import PetSerializer
+from .models import Pet, Categoria, Animal
+from .models import *
+from .serializers import PetSerializer, CategoriaSerializer, AnimalSerialiser
 
 # Create your views here.
 
+#modulo7 semana3
 class AgendamentoModelViewSet(ModelViewSet):
     queryset = Reserva.objects.all()
     serializer_class = AgendamentoModelSerializer
@@ -46,3 +48,12 @@ def test_lucas(request):
 class PetsModelViewSet(ModelViewSet):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
+    
+    
+## att modulo7 semana4
+class AnimalCategoriaView(ModelViewSet):
+    serializer_class = AnimalSerialiser
+    
+    def get_queryset(self):
+        id_categoria = self.kwargs['categoria_id']
+        return Animal.objects.filter(categoria=id_categoria)
