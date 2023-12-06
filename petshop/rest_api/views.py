@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from reserva.models import Reserva
-from rest_api.serializers import AgendamentoModelSerializer
+from rest_api.serializers import AgendamentoModelSerializer, PetshopModelSerializer
 
 ##att modulo 7 semana2
 from .models import Pet, Categoria, Animal
@@ -49,6 +49,12 @@ class PetsModelViewSet(ModelViewSet):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
     
+#modulo 7 semana4
+class PetShopModelViewSet(ReadOnlyModelViewSet):
+    queryset = Pet.objects.all()
+    serializer_class = PetshopModelSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]   
     
 ## att modulo7 semana4
 class AnimalCategoriaView(ModelViewSet):
