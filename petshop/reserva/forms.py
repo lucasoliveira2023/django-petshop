@@ -1,6 +1,6 @@
 from datetime import date
 from django import forms
-from reserva.models import Reserva
+from reserva.models import Reserva, Petshop
 ##atividade do modulo 6 semana4
 class ReservaForm(forms.ModelForm):
     
@@ -8,7 +8,7 @@ class ReservaForm(forms.ModelForm):
         model = Reserva
         fields = [
             'nome', 'email', 'nome_pet', 'data', 'turno',
-            'tamanho', 'observacoes'
+            'telefone','tamanho', 'petshop','observacoes','data'
         ]
         widget = {
             'DiadaReserva': forms.DateInput(attrs={'type': 'date'}),

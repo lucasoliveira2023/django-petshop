@@ -12,7 +12,7 @@ from rest_api.serializers import AgendamentoModelSerializer, PetshopModelSeriali
 ##att modulo 7 semana2
 from .models import Pet, Categoria, Animal
 from .models import *
-from .serializers import PetSerializer, CategoriaSerializer, AnimalSerialiser
+from .serializers import PetSerializer, CategoriaModelSerializer, AnimalSerialiser
 
 # Create your views here.
 
@@ -56,6 +56,15 @@ class PetShopModelViewSet(ReadOnlyModelViewSet):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]   
     
+    
+class CategoriaModelViewSet(ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaModelSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]   
+    
+    
+        
 ## att modulo7 semana4
 class AnimalCategoriaView(ModelViewSet):
     serializer_class = AnimalSerialiser

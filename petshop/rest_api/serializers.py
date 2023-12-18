@@ -56,11 +56,49 @@ class AgendamentoModelSerializer(ModelSerializer):
     
     
 #atividade m7 semana4
-class CategoriaSerializer(serializers.ModelSerializer):
+class CategoriaRelatedFieldCustomSerializer(PrimaryKeyRelatedField):
+    def __init__(self, **kwargs):
+        self.serializer = CategoriaNestedModelSerializer
+        super().__init__(**kwargs)
+        
+    def use_pk_only_optimization(self):
+        return False
+    
+    def to_representation(self, value):
+        return self.serializer(value, context=self.context).data
+class CategoriaNestedModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
         field = '__all__'
-        
+
+class CategoriaModelSerializer(ModelSerializer):
+    reservas = HyperlinkedRelatedField(
+        many = True,
+        read_only = True,
+        view_name= 'api: reserva-detail'
+    )
+    
+    class Meta:
+        model = Categoria
+        fields = '__all__'
+
+class AgendamentoModelSerializer(ModelSerializer):
+    petshop = PetshopRelatedFieldCustomSerializer(
+        queryset = Petshop.objects.all(),
+        read_only = False
+    )
+    categoria = CategoriaRelatedFieldCustomSerializer(
+        queryset = Categoria.objects.all(),
+        read_only = False
+    )
+    
+    class Meta:
+        model = Reserva
+        fields = '__all__'
+
+
+
+
 class AnimalSerialiser(serializers.ModelSerializer):
     class Meta:
         model = Animal
