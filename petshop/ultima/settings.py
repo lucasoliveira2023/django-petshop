@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'ultima.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.petshop',
+        'NAME': BASE_DIR / 'petshop.db',
     }
 }
 

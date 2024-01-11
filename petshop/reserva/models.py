@@ -48,8 +48,8 @@ class Petshop(models.Model):
     bairro = models.CharField(verbose_name='Bairro', max_length=50)
     
     
-    def __str__(self):
-        return f'Nome: {self.nome} - Endereço {self.rua}, {self.numero_da_residencia} - {self.bairro}'
+    def qtd_reservas(self):
+        return self.reservas.count()
     
 
 class Categoria(models.Model):

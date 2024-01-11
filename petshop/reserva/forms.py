@@ -11,17 +11,17 @@ class ReservaForm(forms.ModelForm):
             'telefone','tamanho', 'petshop','observacoes','data'
         ]
         widget = {
-            'DiadaReserva': forms.DateInput(attrs={'type': 'date'}),
+            'data': forms.DateInput(attrs={'type': 'date'}),
         }
     
     def clean_data(self):
-        data = self.cleaned_data['date']
+        data = self.cleaned_data['data']
         hoje = date.today()
         
         if data < hoje:
             raise forms.ValidationError('não é possivel realizar uma reserva para o passado!')
         
-        numeroAtualdeReserva = Reserva.objects.filter(DiadaReserva=data).count()
+        numeroAtualdeReserva = Reserva.objects.filter(data=data).count()
         
         if numeroAtualdeReserva >=4:
             raise forms.ValidationError('ja existem muitas reservas para esse dia, por favor selecione outro dia')
