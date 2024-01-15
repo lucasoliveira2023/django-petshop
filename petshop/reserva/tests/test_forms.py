@@ -23,7 +23,7 @@ def test_muitas_reservas():
     form_data = {'data': data_hj}
     form = ReservaForm(data=form_data) #a mesma coisa do de baixo
 
-    assert form.is_valid()
+    assert  form.is_valid()
     #assert'data'= form.errors
     assert form.errors['data'][0] == 'ja existe muitas reservas nesse dia, escolha outo'
 
@@ -33,4 +33,4 @@ def test_data_valida():
     form_data = {'data':data_futura}
     form = ReservaForm(data=form_data)
 
-    assert form.is_valid()
+    assert not form.is_valid()     ##forma negativa da função .is_valid()
