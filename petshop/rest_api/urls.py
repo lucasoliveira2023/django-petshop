@@ -1,6 +1,7 @@
 from django.urls import path
 
 from rest_framework.routers import SimpleRouter
+#from petshop.rest_api.serializers import AgendamentoModelSerializer
 #import rest_api.views
 from rest_api.views import AgendamentoModelViewSet, hello_world, test_lucas, AnimalCategoriaView, CategoriaModelViewSet
 

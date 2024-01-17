@@ -1,7 +1,13 @@
-from rest_framework.serializers import ModelSerializer, HyperlinkedRelatedField, PrimaryKeyRelatedField
+from rest_framework.serializers import (
+    ModelSerializer, 
+    HyperlinkedRelatedField,
+    PrimaryKeyRelatedField,
+    ValidationError
+)
 from rest_framework import serializers
 from reserva.models import Reserva, Petshop
 from rest_api.models import Pet, Categoria, Animal       #ATT MODULO7 SEMANA2, e semana4
+from datetime import date, datetime
 
 #m7semaan4
 class PetshopModelSerializer(ModelSerializer):
@@ -19,13 +25,6 @@ class PetshopNestedModelSerializer(ModelSerializer):
         model = Petshop
         fields = '__all__'
 
-
-class AgendamentoModelSerializer(ModelSerializer):
-    petshop = PetshopNestedModelSerializer(read_only=True)
-    
-    class Meta:
-        model = Reserva
-        fields = '__all__'
         
 #ATT MODULO7 SEMANA2
 class PetSerializer(ModelSerializer):
@@ -44,15 +43,6 @@ class PetshopRelatedFieldCustomSerializer(PrimaryKeyRelatedField):
     
     def to_representation(self, value):
         return self.serializer(value, context=self.context).data
-    
-class AgendamentoModelSerializer(ModelSerializer):
-    petshop = PetshopRelatedFieldCustomSerializer(
-        queryset=Petshop.objects.all(),
-        read_only=False
-    )
-    class Meta:
-        model = Reserva
-        fields = '__all__'
     
     
 #atividade m7 semana4
@@ -91,12 +81,15 @@ class AgendamentoModelSerializer(ModelSerializer):
         queryset = Categoria.objects.all(),
         read_only = False
     )
-    
+    def validate_data(self, value): ##o today esta dando pau por algum motivo
+        hoje = date.today()
+        if value < hoje:
+            raise ValidationError('Não é possivel realizar um agendamento para o passado!')
+        return value
+
     class Meta:
         model = Reserva
         fields = '__all__'
-
-
 
 
 class AnimalSerialiser(serializers.ModelSerializer):

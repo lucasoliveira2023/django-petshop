@@ -21,8 +21,8 @@ class AgendamentoModelViewSet(ModelViewSet):
     queryset = Reserva.objects.all()
     serializer_class = AgendamentoModelSerializer
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated] #isso aqui é se eu quiser que apenas os autenticados acessem--modulo7semana3
-    #permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticated] #isso aqui é se eu quiser que apenas os autenticados acessem--modulo7semana3
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 
