@@ -39,6 +39,7 @@ class Reserva(models.Model):
     class Meta:
         verbose_name ='Reserva de Banho'
         verbose_name_plural = 'Reservas de Banho'
+        ordering = ['id']
         
         
 class Petshop(models.Model):
@@ -47,9 +48,15 @@ class Petshop(models.Model):
     numero_da_residencia = models.CharField(verbose_name='Numero', max_length=10)
     bairro = models.CharField(verbose_name='Bairro', max_length=50)
     
+    def __str__(self):
+        return f'Nome: {self.nome} - Endereço: {self.rua}, {self.numero_da_residencia} - {self.bairro}'
+
     
     def qtd_reservas(self):
         return self.reservas.count()
+    
+    class Meta:
+        ordering = ['nome']
     
 
 class Categoria(models.Model):
