@@ -71,7 +71,7 @@ class Command(BaseCommand):
         petshop_id = options['petshop']
 
         petshop = Petshop.objects.get(pk=petshop_id)
-        reservas = petshop.reservas.all()### da onde vem a função reservas, estou tendo o mesmo problema em models no reservas .count(models.py de reserva)
+        reservas = petshop.reservas.all() ##bug do vscode
         
         banhos_escolhidos = self.escolher_reservas(reservas, quantity)
         
