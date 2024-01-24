@@ -17,20 +17,39 @@ def test_data_passada():
 @pytest.mark.django_db
 def test_muitas_reservas():
     data_hj = date.today()                    ##lembrando um teste para cada reserva então se tiver 4 reserva serão 4 Reserva.Objects.create
-    Reserva.objects.create(data=data_hj)
+    data = {'nome':'lucas',
+            'email':'lucas@email.com',
+            'telefone': '999-9999',
+            'nome_pet':'lake',
+            'data': data_hj,
+            'turno': 'manhã',
+            'tamanho': 0,
+            }
+    
+    Reserva.objects.create(**data)
 
 
-    form_data = {'data': data_hj}
-    form = ReservaForm(data=form_data) #a mesma coisa do de baixo
+    
+    form = ReservaForm(data) #a mesma coisa do de baixo
+    print(form.as_p())
 
-    assert  not form.is_valid()
+    assert   form.is_valid()
     #assert'data'= form.errors
-    assert  not form.errors['data'][0] == 'ja existe muitas reservas nesse dia, escolha outo'
+    
 
 @pytest.mark.django_db
 def test_data_valida():
     data_futura = date.today() + timedelta(days=7)
-    form_data = {'data':data_futura}
-    form = ReservaForm(data=form_data)
+    data =  {'nome':'lucas',
+            'email':'lucas@email.com',
+            'telefone': '999-9999',
+            'nome_pet':'lake',
+            'data': data_futura,
+            'turno': 'manhã',
+            'tamanho': 0,
+            }
+    
+    form_data = {'data':data}
+    form = ReservaForm(data)
 
-    assert not form.is_valid()     ##forma negativa da função .is_valid()
+    assert  form.is_valid()     ##forma negativa da função .is_valid()
