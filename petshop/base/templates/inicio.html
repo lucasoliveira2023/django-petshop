@@ -7,6 +7,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap.min.css" rel="stylesheet">
     <style>
+      
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -27,14 +28,16 @@
     <div class="col-lg-8 mx-auto p-3 py-md-5">
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
         <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          
             <span class="fs-4">Pet Online - Reserve o banho do seu Pet</span>
         </a>
     </header>
     <main>
-      {% block principal %}
-        <h1>Faça sua reserva de banho para o seu Pet</h1>
-        <a href="{% url 'reserva:criar_reserva' %}" class="btn btn-primary" > Fazer Reserva </a>
-      {% endblock %}
+        {% block principal %}
+        
+        <h1>Reserve ja o banho do seu pet</h1>
+        <a href="{% url 'reserva:criar_reserva' %}" class="btn btn-primary"> Fazer Reserva </a>
+        {% endblock %}
     </main>
     <footer class="pt-5 my-5 text-muted border-top">
         Pet Online - Banhos para seus Pets

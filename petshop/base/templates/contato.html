@@ -1,6 +1,23 @@
 {% extends "inicio.html" %}
 {% load bootstrap5 %}
 {% block principal %}
+<style>
+    body {
+        background-color: black;
+    }
+    form{
+        color: green;
+    }
+
+    h1 {
+            text-align: center; /* Centraliza o título na página */
+            color: green;
+        }
+
+    p {
+        color:green;
+    }
+</style>
 <h1> Fale Conosco </h1>
 <p>
     Envie uma mensagem através do formulário abaixo ou ligue para o telefone {{ telefone }}

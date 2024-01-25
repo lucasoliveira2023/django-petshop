@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title> Reserva de Banho para Pets </title>
+    <title>Reserva de Banho para Pets</title>
     <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050d16; /* Cor de fundo azul */
+            background-image: url('{% static 'base/imagens/o-gato-esta-tomando-banho-generative-ai_74760-641.jpg'}'); /* Substitua pelo caminho real da sua imagem */
+            background-size: cover; /* Garante que a imagem cobre todo o fundo */
+            background-position: center; /* Centraliza a imagem no fundo */
+            color: #ffffff; /* Cor do texto (branco, para contrastar com o fundo) */
+        }
+
+        h1 {
+            text-align: center; /* Centraliza o título na página */
+            color: yellowgreen
+        }
+        /* ainda não acertei a cor que eu queria */
+        form {
+            max-width: 600px; /* Define a largura máxima do formulário para melhor visualização */
+            margin: 0 auto; /* Centraliza o formulário na página */
+            background-color: rgba(157, 255, 0, 0.596); /* Cor de fundo branca com opacidade */
+            padding: 20px; /* Espaçamento interno do formulário */
+            border-radius: 10px; /* Borda arredondada do formulário */
+        }
+
+        button {
+            width: 100%; /* Botão ocupa toda a largura do formulário */
+        }
+    </style>
 </head>
 <body>
-    <h1> Reserva de Banho para Pets </h1>
+    <h1>Reserva de Banho para Pets</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Efetivar Reserva">
+        <button type="submit" class="btn btn-primary">Efetivar a reserva</button>
     </form>
-<body>
+</body>
 </html>
