@@ -56,10 +56,11 @@ class CategoriaRelatedFieldCustomSerializer(PrimaryKeyRelatedField):
     
     def to_representation(self, value):
         return self.serializer(value, context=self.context).data
+    
 class CategoriaNestedModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-        field = '__all__'
+        fields = '__all__'
 
 class CategoriaModelSerializer(ModelSerializer):
     reservas = HyperlinkedRelatedField(
