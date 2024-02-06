@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'reserva',
     'rest_framework',
     'rest_api',
+    'static',
 ]
 
 MIDDLEWARE = [

@@ -21,4 +21,5 @@ urlpatterns = [
     path('animais/categoria/', AnimalCategoriaView.as_view('get')),
 ]
 
+urlpatterns = urlpatterns + router.urls
 urlpatterns += router.urls
